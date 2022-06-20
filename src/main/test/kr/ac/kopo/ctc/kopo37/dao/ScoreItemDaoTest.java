@@ -8,26 +8,59 @@ import kr.ac.kopo.ctc.kopo37.domain.ScoreItem;
 
 class ScoreItemDaoTest {
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
-	
 	private ScoreItemDao scoreItemDao = new ScoreItemDaoImpl();
 	
-	void testCreate() {
+	@Test
+	void testinsert() {
 		ScoreItem scoreItemInput = new ScoreItem();
-//		scoreItemInput.setId(1);
-		scoreItemInput.setName("홍길동");
-		scoreItemInput.setStudentId(1);
-		scoreItemInput.setKor(100);
-		scoreItemInput.setEng(90);
-		scoreItemInput.setMat(80);
+		scoreItemInput.setName("나연");
+		scoreItemInput.setStudentId(209920);
+		scoreItemInput.setKor(95);
+		scoreItemInput.setEng(100);
+		scoreItemInput.setMat(95);
 		
-		ScoreItem scoreItemOutput = scoreItemDao.create(scoreItemInput);
+		scoreItemDao.insert(scoreItemInput);
 		
-		assertEquals(scoreItemOutput.getName(), "홍길동");
-		assertEquals(scoreItemOutput.getId(), 1);
+		ScoreItem scoreItemOutput = scoreItemDao.selectOne(209920);
+		
+		assertEquals(scoreItemOutput.getName(), scoreItemInput.getName());
+		assertEquals(scoreItemOutput.getId(), scoreItemInput.getId());
 	}
+	
+//	@Test
+//	void testdelete() {
+//
+//		int id = 209920;
+//		
+//		scoreItemDao.delete(id);
+//		
+//		int afterDataLength = scoreItemDao.selectTotalCount();
+//		
+//		assertEquals(19, afterDataLength);
+//	}
+//	
+//	@Test
+//	void testUpdate() {
+//		ScoreItem scoreItemInput = new ScoreItem();
+//		ScoreItem scoreItemOutput = new ScoreItem();
+//		
+//		scoreItemInput.setName("나연");
+//		scoreItemInput.setStudentId(209901);
+//		scoreItemInput.setKor(40);
+//		scoreItemInput.setEng(40);
+//		scoreItemInput.setMat(40);
+//		
+//		scoreItemDao.update(scoreItemInput);
+//		
+//		scoreItemOutput = scoreItemDao.selectOne(209901);
+//		
+//		assertEquals("나연", scoreItemOutput.getName());
+//		assertEquals(209901, scoreItemOutput.getStudentId());
+//		assertEquals(40, scoreItemOutput.getKor());
+//		assertEquals(40, scoreItemOutput.getEng());
+//		assertEquals(40, scoreItemOutput.getMat());
+//	}
+	
+	
 
 }
