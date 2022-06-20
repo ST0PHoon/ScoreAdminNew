@@ -6,6 +6,7 @@ public class Pagination {
 	private int nPage;
 	private int nnPage;
 	private int cPage;
+	
 	public int getPpPage() {
 		return ppPage;
 	}
