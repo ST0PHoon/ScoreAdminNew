@@ -39,58 +39,55 @@ public class ScoreItemServiceImpl implements ScoreItemService {
 
 	@Override
 	public Pagination getPagination(int currentPage, int countPerPage, int pageSize, int totalCount) {
-//		ScoreItem scoreItem = scoreItemDao.selectOne(1);
-		Pagination p = new Pagination();
+		// currPage : 현재 페이지 , countPerPage : 한 페이지에 나올 숫자 목록, pageSize : 한 페이지 목록 수,
+		// totalCount : 전체 목록 수
+		// 현재 페이지가 1보다 작거나 같으면 > 현재 페이지는 1
+		if (currentPage <= 1) {
+			currentPage = 1;
+		}
+		// firstPage : 제일 처음 페이지
+		int firstPage = 1;
 
-		// 초기 보정
-		// currentPage가 1보다 작거나 최대 길이를 초과했을 경우 보정.
-		if (currentPage < 1) {
+		// finalPage : 제일 마지막 페이지
+		int finalPage = (int) Math.ceil((double) totalCount / pageSize);
+
+		// 현재 페이지가 마지막 페이지보다 크면 > 현재 페이지는 마지막 페이지
+		if (currentPage > finalPage) {
+			currentPage = finalPage;
+		}
+
+		// previousListPage : 앞 숫자 목록의 처음 숫자(<를 누르면 나오는 숫자)
+		int previousListPage = (int) Math.floor((double) currentPage / countPerPage);
+		// int previousListPage = (currPage/countPerPage) * countPerPage + 1;
+
+		if (previousListPage <= 1) {
+			previousListPage = 1;
+		} else {
+			previousListPage = (previousListPage - 1) * countPerPage + 1;
+		}
+
+		// nextListPage : 다음 목록의 처음 숫자 (>를 누르면 나오는 숫자)
+		int nextListPage = (int) (Math.ceil((double) currentPage / countPerPage) * countPerPage) + 1;
+
+		if (nextListPage > finalPage) {
+			nextListPage = finalPage;
+		}
+		// 글이 없는경우
+		if (totalCount == 0) {
+			firstPage = 1;
+			previousListPage = 1;
+			nextListPage = 1;
+			finalPage = 1;
 			currentPage = 1;
 		}
 
-		// totalCount가 countPerPage * pageSize 보다 작은경우
-		if (totalCount < countPerPage * pageSize) {
-			countPerPage = totalCount / pageSize + 1;
-			if (totalCount % pageSize == 0) {
-				countPerPage--;
-			}
-		}
+		Pagination pagination = new Pagination();
+		pagination.setPpPage(firstPage);
+		pagination.setpPage(previousListPage);
+		pagination.setnPage(nextListPage);
+		pagination.setNnPage(finalPage);
+		pagination.setcPage(currentPage);
 
-		// 결과변수 선언
-		int PpPageResult = 1;
-		int pPageResult;
-		int nPageResult;
-		int NnPageResult;
-		int cPageResult = currentPage;
-
-		// pPageResult 세팅, 예외사항 - 1 아래로 내려갈 수 없음
-		pPageResult = (int) Math.floor((double) currentPage / countPerPage);
-		// int previousListPage = (currPage/countPerPage) * countPerPage + 1;
-
-		if (pPageResult <= 1) {
-			pPageResult = 1;
-		} else {
-			pPageResult = (pPageResult - 1) * countPerPage + 1;
-		}
-
-		// nPageResult 세팅, 예외사항 - 뒤로 넘길수 없으면 마지막 페이지로 가게 설정
-		nPageResult = (int)(Math.ceil((double) currentPage/countPerPage)*countPerPage)+1;
-
-		// NnPageResult 세팅, 예외사항 딱 나누어 떨어질 경우의 예외 처리?
-		NnPageResult = (int) Math.ceil((double) totalCount / pageSize);
-
-		// 추후 보정
-		if (currentPage > NnPageResult) {
-			currentPage = NnPageResult;
-		}
-
-		p.setPpPage(PpPageResult);
-		p.setpPage(pPageResult);
-		p.setnPage(nPageResult);
-		p.setNnPage(NnPageResult);
-		p.setcPage(cPageResult);
-
-		return p;
+		return pagination;
 	}
-
 }
