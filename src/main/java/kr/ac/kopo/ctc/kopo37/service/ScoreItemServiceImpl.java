@@ -3,11 +3,12 @@ package kr.ac.kopo.ctc.kopo37.service;
 import java.util.List;
 
 import kr.ac.kopo.ctc.kopo37.dao.ScoreItemDao;
+import kr.ac.kopo.ctc.kopo37.dao.ScoreItemDaoImpl;
 import kr.ac.kopo.ctc.kopo37.domain.ScoreItem;
 import kr.ac.kopo.ctc.kopo37.dto.Pagination;
 
 public class ScoreItemServiceImpl implements ScoreItemService {
-	private ScoreItemDao scoreItemDao;
+	private ScoreItemDao scoreItemDao = new ScoreItemDaoImpl();
 
 	@Override
 	public ScoreItemDao getScoreItemDao() {
