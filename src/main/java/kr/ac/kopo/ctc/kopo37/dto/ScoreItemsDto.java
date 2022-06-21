@@ -2,11 +2,13 @@ package kr.ac.kopo.ctc.kopo37.dto;
 
 import java.util.List;
 
+import kr.ac.kopo.ctc.kopo37.dao.ScoreItemDao;
 import kr.ac.kopo.ctc.kopo37.domain.ScoreItem;
 
 public class ScoreItemsDto {
 	private List<ScoreItem> ScoreItems;
 	private Pagination pagination;
+	private ScoreItemDao scoreItemDao;
 	
 	public List<ScoreItem> getScoreItems() {
 		return ScoreItems;
@@ -19,6 +21,14 @@ public class ScoreItemsDto {
 	}
 	public void setPagination(Pagination pagination) {
 		this.pagination = pagination;
+	}
+
+	public ScoreItemDao getScoreItemDao() {
+		return scoreItemDao;
+	}
+
+	public void setScoreItemDao(ScoreItemDao scoreItemDao) {
+		this.scoreItemDao = scoreItemDao;
 	}
 	
 }
