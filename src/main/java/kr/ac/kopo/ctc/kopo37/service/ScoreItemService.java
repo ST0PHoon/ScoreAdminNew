@@ -5,18 +5,22 @@ import java.util.List;
 import kr.ac.kopo.ctc.kopo37.dao.ScoreItemDao;
 import kr.ac.kopo.ctc.kopo37.domain.ScoreItem;
 import kr.ac.kopo.ctc.kopo37.dto.Pagination;
+import kr.ac.kopo.ctc.kopo37.dto.ScoreItemsDto;
 
 public interface ScoreItemService {
-	ScoreItem create(ScoreItem scoreItem);
 	
-	ScoreItem selectOne(int id);
+	ScoreItemsDto scoreItemSelectAll(String strCPage);
 	
-	List<ScoreItem> selectAll(int page, int countPerPage);
+	List<ScoreItem> selectScoreItemsByName(String name);
+	
+	ScoreItem scoreItemSelectById(int id);
+	
+	void scoreItemInsert(String name, int kor, int eng, int mat);
+	
+	void scoreItemUpdate(ScoreItem scoreItem);
+	
+	void scoreItemDelete(int id);
 	
 	Pagination getPagination(int currentPage, int countPerPage, int pageSize, int totalCount);
-	
-	ScoreItemDao getScoreItemDao();
-	
-	void setScoreItemDao(ScoreItemDao scoreItemDao);
 
 }
