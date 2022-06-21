@@ -13,15 +13,17 @@ import org.junit.jupiter.api.Test;
 import kr.ac.kopo.ctc.kopo37.dao.ScoreItemDao;
 import kr.ac.kopo.ctc.kopo37.dao.ScoreItemDaoMock;
 import kr.ac.kopo.ctc.kopo37.dto.Pagination;
+import kr.ac.kopo.ctc.kopo37.dto.ScoreItemsDto;
 
 class ScoreItemServiceTest {
 
 	private ScoreItemDao scoreItemDao = new ScoreItemDaoMock();
 	private ScoreItemService scoreItemService = new ScoreItemServiceImpl();
+	private ScoreItemsDto scoreItemDto = new ScoreItemsDto();
 
 	@BeforeEach
 	void setUp() throws Exception {
-		scoreItemService.setScoreItemDao(scoreItemDao);
+		scoreItemDto.setScoreItemDao(scoreItemDao);
 	}
 
 	@AfterEach
