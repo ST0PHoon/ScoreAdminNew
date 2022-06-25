@@ -73,35 +73,38 @@
   </table>
   
 <br>	
+	<div class="text-center">
+		<c:url var="urlppPage" value="/selectAllScoreItem.jsp" >
+			<c:param name="cPage" value="${pagination.ppPage}"/>
+		</c:url>
 		
-	<c:url var="urlppPage" value="/AllViewDB.jsp" context="/ScoreAdmin">
-		<c:param name="cPage" value="${pagination.ppPage}"/>
-	</c:url>
-	
-			<c:url var="urlnnPage" value="/AllViewDB.jsp" context="/ScoreAdmin">
-		<c:param name="cPage" value="${pagination.nnPage}"/>
-	</c:url>
-	
-	
-	
-	<c:url var="urlnPage" value="/AllViewDB.jsp" context="/ScoreAdmin">
-		<c:param name="cPage" value="${pagination.nPage}"/>
-	</c:url>
-	
-	
-	<c:if test="${ppPage ne 0 && pPage ne 0}">
-	  <a href=<c:out value="${urlppPage}"/>><c:out value="<<"/></a>&nbsp
-	  <b><a href = 'selectAllScoreItem.jsp?cPage=${pagination.pPage}'> &lt </a></b>
-	</c:if>
-	
-	<c:forEach var="i" begin="${pagination.startPage}" end="${pagination.lastPage}">
-	  <b><a href = 'selectAllScoreItem.jsp?cPage=${i}'>${i}</a></b>
-	</c:forEach>
-	      
-	<c:if test="${nnPage ne 0 && nPage ne 0}">
-		&nbsp&nbsp<a href=<c:out value="${urlnPage}"/>><c:out value=">"/></a>
-		&nbsp<a href=<c:out value="${urlnnPage}"/>><c:out value=">>"/></a>
-	</c:if>
+		<c:url var="urlpPage" value="/selectAllScoreItem.jsp">
+			<c:param name="cPage" value="${pagination.pPage}"/>
+		</c:url>
+		
+		<c:url var="urlnnPage" value="/selectAllScoreItem.jsp">
+			<c:param name="cPage" value="${pagination.nnPage}"/>
+		</c:url>
+		
+		<c:url var="urlnPage" value="/selectAllScoreItem.jsp">
+			<c:param name="cPage" value="${pagination.nPage}"/>
+		</c:url>
+		
+		
+		<c:if test="${ppPage ne 0 && pPage ne 0}">
+		  <a href=<c:out value="${urlppPage}"/>><c:out value="<<"/></a>
+		  <a href=<c:out value="${urlppPage}"/>><c:out value="<"/></a>
+		</c:if>
+		
+		<c:forEach var="i" begin="${pagination.startPage}" end="${pagination.lastPage}">
+		  <b><a href = 'selectAllScoreItem.jsp?cPage=${i}'>${i}</a></b>
+		</c:forEach>
+		      
+		<c:if test="${nnPage ne 0 && nPage ne 0}">
+			<a href=<c:out value="${urlnPage}"/>><c:out value=">"/></a>
+			<a href=<c:out value="${urlnnPage}"/>><c:out value=">>"/></a>
+		</c:if>
+	</div>
 </div>
 
 </body>
