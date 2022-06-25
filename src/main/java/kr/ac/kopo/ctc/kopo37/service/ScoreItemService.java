@@ -17,7 +17,7 @@ public interface ScoreItemService {
 	
 	void scoreItemInsert(String name, int kor, int eng, int mat);
 	
-	void scoreItemUpdate(ScoreItem scoreItem);
+	void scoreItemUpdate(String name, String id, String kor, String eng, String mat);
 	
 	void scoreItemDelete(int id);
 	

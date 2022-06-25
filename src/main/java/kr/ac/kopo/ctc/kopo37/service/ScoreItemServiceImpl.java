@@ -45,7 +45,14 @@ public class ScoreItemServiceImpl implements ScoreItemService {
 	}
 
 	@Override
-	public void scoreItemUpdate(ScoreItem scoreItem) {
+	public void scoreItemUpdate(String name, String id, String kor, String eng, String mat) {
+		ScoreItem scoreItem = new ScoreItem();
+		scoreItem.setName(name);
+		scoreItem.setStudentId(Integer.parseInt(id));
+		scoreItem.setKor(Integer.parseInt(kor));
+		scoreItem.setEng(Integer.parseInt(eng));
+		scoreItem.setMat(Integer.parseInt(mat));
+		
 		scoreItemDao.update(scoreItem);
 	}
 
