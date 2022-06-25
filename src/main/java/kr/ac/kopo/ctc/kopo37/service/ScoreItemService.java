@@ -1,15 +1,15 @@
 package kr.ac.kopo.ctc.kopo37.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
-import kr.ac.kopo.ctc.kopo37.dao.ScoreItemDao;
 import kr.ac.kopo.ctc.kopo37.domain.ScoreItem;
 import kr.ac.kopo.ctc.kopo37.dto.Pagination;
-import kr.ac.kopo.ctc.kopo37.dto.ScoreItemsDto;
+
 
 public interface ScoreItemService {
 	
-	ScoreItemsDto scoreItemSelectAll(String strCPage);
+	List<ScoreItem> scoreItemSelectAll(int cPage, int countPerPage) throws ClassNotFoundException, SQLException;
 	
 	List<ScoreItem> selectScoreItemsByName(String name);
 	
