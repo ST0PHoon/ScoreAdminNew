@@ -4,31 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import kr.ac.kopo.ctc.kopo37.dao.ScoreItemDao;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import kr.ac.kopo.ctc.kopo37.dao.ScoreItemDao;
-import kr.ac.kopo.ctc.kopo37.dao.ScoreItemDaoMock;
 import kr.ac.kopo.ctc.kopo37.dto.Pagination;
-import kr.ac.kopo.ctc.kopo37.dto.ScoreItemsDto;
+
 
 class ScoreItemServiceTest {
 
-	private ScoreItemDao scoreItemDao = new ScoreItemDaoMock();
 	private ScoreItemService scoreItemService = new ScoreItemServiceImpl();
-	private ScoreItemsDto scoreItemDto = new ScoreItemsDto();
 
-	@BeforeEach
-	void setUp() throws Exception {
-		scoreItemDto.setScoreItemDao(scoreItemDao);
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
 
 	// 페이지 수가 충분하고 일반적인 경우, 첫페이지
 	@Test
