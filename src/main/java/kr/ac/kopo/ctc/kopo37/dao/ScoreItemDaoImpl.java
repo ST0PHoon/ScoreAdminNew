@@ -22,10 +22,10 @@ public class ScoreItemDaoImpl implements ScoreItemDao {
 	}
 
 	@Override
-	public List<ScoreItem> selectAll(int page, int countPerPage) {
+	public List<ScoreItem> selectAll(int page, int countPerPage) throws SQLException, ClassNotFoundException {
 		List<ScoreItem> results = new ArrayList<>();
 
-		String sql = "SELECT * FROM examtable";
+		String sql = "SELECT * FROM examtable limit " + (countPerPage * (page - 1)) + ", " + countPerPage  + ";";
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "kopo37");
 				Statement stmt = conn.createStatement();) {
 			try (ResultSet rs = stmt.executeQuery(sql)) {

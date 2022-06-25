@@ -1,12 +1,13 @@
 package kr.ac.kopo.ctc.kopo37.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import kr.ac.kopo.ctc.kopo37.domain.ScoreItem;
 
 public interface ScoreItemDao {
 	
-	List<ScoreItem> selectAll(int page, int countPerPage);
+	List<ScoreItem> selectAll(int page, int countPerPage) throws SQLException, ClassNotFoundException;
 	
 	ScoreItem selectOne(int id);
 	
