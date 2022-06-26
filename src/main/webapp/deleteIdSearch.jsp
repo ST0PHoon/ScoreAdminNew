@@ -12,8 +12,8 @@
 <jsp:include page="menu.jsp"></jsp:include>
 
 <div class="container mt-3">
-  <h2>조회할 학번</h2>
-  <form action="/deleteScoreItem.jsp">
+  <h2>삭제 학번 조회</h2>
+  <form action="deleteScoreItem.jsp">
     <div class="mb-3 mt-3">
       <input type="number" class="form-control" id="studentId" name='searchid' value="209901" min="209901">
     </div>
