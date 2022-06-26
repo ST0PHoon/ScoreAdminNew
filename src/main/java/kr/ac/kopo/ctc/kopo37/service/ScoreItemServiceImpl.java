@@ -27,7 +27,9 @@ public class ScoreItemServiceImpl implements ScoreItemService {
 	}
 
 	@Override
-	public void scoreItemInsert(String name, int kor, int eng, int mat) {
+	public int scoreItemInsert(String name, String kor, String eng, String mat) {
+		ScoreItem scoreItem = new ScoreItem();
+		
 		int newId = scoreItemDao.selectNewId();
 		int firstId = scoreItemDao.selectFirstId();
 
@@ -35,13 +37,15 @@ public class ScoreItemServiceImpl implements ScoreItemService {
 			newId = 209901;
 		}
 
-		ScoreItem scoreItem = new ScoreItem();
-
-		scoreItem.setId(newId);
 		scoreItem.setName(name);
-		scoreItem.setKor(kor);
-		scoreItem.setEng(eng);
-		scoreItem.setMat(mat);
+		scoreItem.setStudentId(newId);
+		scoreItem.setKor(Integer.parseInt(kor));
+		scoreItem.setEng(Integer.parseInt(eng));
+		scoreItem.setMat(Integer.parseInt(mat));
+		
+		scoreItemDao.insert(scoreItem);
+		
+		return scoreItem.getStudentId();
 	}
 
 	@Override
