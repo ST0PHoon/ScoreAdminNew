@@ -27,17 +27,17 @@ class ScoreItemDaoTest {
 //		assertEquals(scoreItemOutput.getId(), scoreItemInput.getId());
 //	}
 	
-//	@Test
-//	void testDelete() {
-//
-//		int id = 209920;
-//		
-//		scoreItemDao.delete(id);
-//		
-//		int afterDataLength = scoreItemDao.selectTotalCount();
-//		
-//		assertEquals(19, afterDataLength);
-//	}
+	@Test
+	void testDelete() {
+
+		int id = 0;
+		
+		scoreItemDao.delete(id);
+		
+		int afterDataLength = scoreItemDao.selectTotalCount();
+		
+		assertEquals(19, afterDataLength);
+	}
 //	
 //	@Test
 //	void testUpdate() {
@@ -61,25 +61,25 @@ class ScoreItemDaoTest {
 //		assertEquals(40, scoreItemOutput.getMat());
 //	}
 	
-	@Test
-	void testSelectOne() {
-		ScoreItem scoreItemOutput = new ScoreItem();
-		
-		scoreItemOutput = scoreItemDao.selectOne(209901);
-		
-		assertEquals("나연", scoreItemOutput.getName());
-		assertEquals(209901, scoreItemOutput.getStudentId());
-		assertEquals(40, scoreItemOutput.getKor());
-		assertEquals(40, scoreItemOutput.getEng());
-		assertEquals(40, scoreItemOutput.getMat());
-	}
-	
-	@Test
-	void testSelectAll() {
-		
-		int afterDataLength = scoreItemDao.selectTotalCount();
-		
-		assertEquals(19, afterDataLength);
-	}
+//	@Test
+//	void testSelectOne() {
+//		ScoreItem scoreItemOutput = new ScoreItem();
+//		
+//		scoreItemOutput = scoreItemDao.selectOne(209901);
+//		
+//		assertEquals("나연", scoreItemOutput.getName());
+//		assertEquals(209901, scoreItemOutput.getStudentId());
+//		assertEquals(40, scoreItemOutput.getKor());
+//		assertEquals(40, scoreItemOutput.getEng());
+//		assertEquals(40, scoreItemOutput.getMat());
+//	}
+//	
+//	@Test
+//	void testSelectAll() {
+//		
+//		int afterDataLength = scoreItemDao.selectTotalCount();
+//		
+//		assertEquals(19, afterDataLength);
+//	}
 
 }
