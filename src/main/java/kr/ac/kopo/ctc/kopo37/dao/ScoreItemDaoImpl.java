@@ -131,7 +131,7 @@ public class ScoreItemDaoImpl implements ScoreItemDao {
 
 	@Override
 	public int selectNewId() {
-		String sql = "select studentid+1 from examtable where (studentid+1) not in (select studentid from examtable)";
+		String sql = "select MIN(studentid+1) from examtable where (studentid+1) not in (select studentid from examtable where studentid >= 209901)";
 		int newId = 0;
 		try (
 				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kopoctc", "root", "kopo37");
