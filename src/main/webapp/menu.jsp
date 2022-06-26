@@ -23,9 +23,9 @@
 				<li class="nav-item"><a class="nav-link"
 					href="insertScoreItem.jsp">입력</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="searchUpdateId.jsp">수정</a></li>
+					href="updateIdSearch.jsp">수정</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="searchDeleteId.jsp">삭제</a></li>
+					href="deleteIdSearch.jsp">삭제</a></li>
 			</ul>
 		</div>
 	</nav>
