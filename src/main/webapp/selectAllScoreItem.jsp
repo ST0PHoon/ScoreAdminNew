@@ -58,7 +58,7 @@
     </thead>
     <tbody>
       <c:forEach var="scoreItem" items="${scoreItems}">
-		<c:url var="url" value = "/OneView.jsp" context="/ScoreAdmin">
+		<c:url var="url" value = "/selectByName.jsp">
 		  <c:param name = "name" value = "${scoreItem.name}"/>
 		</c:url>
 		  <tr height=80px align=center>
